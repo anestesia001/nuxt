@@ -72,7 +72,7 @@ pipeline {
                    tar -czvf frontend.tar.gz .output/public
                    rsync -av --delete -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" .output/public "jenkins@${env.HOST}:${env.PRJ_DIR}"
                 """
-                archiveArtifacts artifacts: 'frontend.tar.gz', fingerprint: true, onlySuccessful: true
+                archiveArtifacts artifacts: 'frontend.tar.gz', fingerprint: true, onlyIfSuccessful: true
             }
         }
     }
